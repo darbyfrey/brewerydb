@@ -52,7 +52,7 @@ class BreweryDb
     def glassware(options={});  send_request("/glassware", options);        end
     def search(options={});     send_request("/search", options);           end
     def convertid(options={});  send_request("/convertid", options);        end
-    def search;                 send_request('/search', options);           end
+    # def search;                 send_request('/search', options);           end
     def heartbeat;              send_request("/heartbeat");                 end
     def featured;               send_request("/featured");                  end
     
