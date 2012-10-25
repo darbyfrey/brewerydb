@@ -29,7 +29,7 @@ class BreweryDb
       end
 
       # beer specific endpoints
-      if endpoint == 'beer'
+      if endpoint == 'beers'
         ["breweries", "events", "ingredients", "socialaccounts", "upcs", "variations"].each do |beer_endpoint|
           define_method "beer_#{beer_endpoint}" do |id, *options|
             self.send_request("/beer/#{id}/#{beer_endpoint}", options.first || {})
