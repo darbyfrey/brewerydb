@@ -26,7 +26,16 @@ class BreweryDb
       # singular endpoints
       define_method endpoint.singularize do |id, *options|
         self.send_request("/#{endpoint.singularize}/#{id}", options.first || {})
-      end  
+      end
+
+      # beer specific endpoints
+      if endpoint == 'beer'
+        ["breweries", "events", "ingredients", "socialaccounts", "upcs", "variations"].each do |beer_endpoint|
+          define_method "beer_#{beer_endpoint}" do |id, *options|
+            self.send_request("/beer/#{id}/#{beer_endpoint}", options.first || {})
+          end
+        end
+      end
     end
     
     # menu endpoints
